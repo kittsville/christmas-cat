@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"github.com/aws/aws-lambda-go/lambda"
+	"github.com/intenthq/golukay"
 )
 
 var version = "0.2"
@@ -110,6 +111,18 @@ var objects = []string{
 	"churn",
 }
 
+func isBankHoliday(holidays []golukay.BankHoliday, date time.Time) bool {
+	for _, holiday := range holidays {
+		y1, m1, d1 := holiday.Date.Date()
+		y2, m2, d2 := date.Date()
+
+		if y1 == y2 && m1 == m2 && d1 == d2 {
+			return true
+		}
+	}
+	return false
+}
+
 func main() {
 	lambda.Start(handleRequest)
 }
@@ -118,6 +131,16 @@ func handleRequest() {
 	fmt.Println("Running Business Cat Bot V" + version)
 
 	today := time.Now()
+
+	// Checks if it is a bank holiday (no standup should be posted)
+	holidays, err := golukay.GetHolidays()
+
+	if err == nil {
+		if isBankHoliday(holidays.EnglandAndWales.Events, today) {
+			fmt.Println("Bank holiday today, no standup message needed")
+			return
+		}
+	}
 
 	var lastWorkday time.Time
 	var lastWorkdayName string
