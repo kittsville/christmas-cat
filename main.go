@@ -69,6 +69,7 @@ var verbs = []verb{
 	verb{"Stared nerviously at", "Stare nervously at"},
 	verb{"Stared out the window at", "Stare out the window at"},
 	verb{"Coughed hairball onto", "Cough hairball onto"},
+	verb{"Knocked over", "Knock over"},
 }
 
 var subjects = []string{
