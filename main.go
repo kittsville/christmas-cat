@@ -70,6 +70,10 @@ var verbs = []verb{
 	verb{"Stared out the window at", "Stare out the window at"},
 	verb{"Coughed hairball onto", "Cough hairball onto"},
 	verb{"Knocked over", "Knock over"},
+	verb{"Vomited on", "Vomit on"},
+	verb{"Hissed at", "Hiss at"},
+	verb{"Kneaded", "Knead"},
+	verb{"Sat on", "Sit on"},
 }
 
 var subjects = []string{
@@ -110,6 +114,8 @@ var objects = []string{
 	"roadmap",
 	"agenda",
 	"churn",
+	"intern",
+	"prospective client",
 }
 
 func isBankHoliday(holidays []golukay.BankHoliday, date time.Time) bool {
