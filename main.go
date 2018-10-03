@@ -137,6 +137,11 @@ func main() {
 func handleRequest() {
 	fmt.Println("Running Business Cat Bot V" + version)
 
+	_, dryRun := os.LookupEnv("DRY_RUN")
+	if dryRun {
+		fmt.Println("Running in dry run mode, will not post message to Slack")
+	}
+
 	today := time.Now()
 
 	// Checks if it is a bank holiday (no standup should be posted)
@@ -173,6 +178,12 @@ func handleRequest() {
 	}
 
 	jsonValue, _ := json.Marshal(payload)
+
+	if dryRun {
+		fmt.Println("Skipping posting to Slack")
+
+		return
+	}
 
 	fmt.Println("Posting standup to Slack...")
 	response, err := http.Post(slackHook, "application/json", bytes.NewBuffer(jsonValue))
