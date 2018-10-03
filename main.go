@@ -7,13 +7,14 @@ import (
 	"math/rand"
 	"net/http"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/intenthq/golukay"
 )
 
-var version = "0.2"
+var version = "0.3"
 
 type slackResponse struct {
 	ResponseType string `json:"response_type"`
@@ -76,7 +77,7 @@ var verbs = []verb{
 	verb{"Sat on", "Sit on"},
 }
 
-var subjects = []string{
+var defaultSubjects = []string{
 	"our",
 	"our",
 	"our",
@@ -91,7 +92,7 @@ var subjects = []string{
 	"vendor's",
 }
 
-var objects = []string{
+var defaultObjects = []string{
 	"data",
 	"data lake",
 	"dashboard",
@@ -212,6 +213,26 @@ func getStandup(date time.Time, past bool) string {
 		verb = verbForms.Past
 	} else {
 		verb = verbForms.Present
+	}
+
+	var subjects, objects []string
+
+	customSubjects, hasCustomSubjects := os.LookupEnv("EXTRA_SUBJECTS")
+
+	if hasCustomSubjects {
+		fmt.Println("Adding custom subjects to standup message generator")
+		subjects = append(defaultSubjects, strings.Split(customSubjects, ",")...)
+	} else {
+		subjects = defaultSubjects
+	}
+
+	customObjects, hasCustomObjects := os.LookupEnv("EXTRA_OBJECTS")
+
+	if hasCustomObjects {
+		fmt.Println("Adding custom objects to standup message generator")
+		objects = append(defaultObjects, strings.Split(customObjects, ",")...)
+	} else {
+		objects = defaultObjects
 	}
 
 	return verb + " " + getRandom(subjects) + " " + getRandom(objects)

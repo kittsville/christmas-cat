@@ -22,3 +22,10 @@ If Business Cat's running as a Lambda, you can re-deploy him like so:
 2. Package with `zip handler.zip ./main`
 3. Go to Business Cat's Lambda config
 4. Upload zip under _Function code_ header
+
+## Customise
+
+Want work-specific terms to appear in standup messages? You can customise the subjects (e.g. client's, our, etc.)
+or objects (e.g. exports, workflow, roadmap, etc.) referred to by Business Cat using the `EXTRA_SUBJECTS` and
+`EXTRA_OBJECTS` environment variables. Both take a comma separated list like so:  
+`EXTRA_OBJECTS=agenda,churn,intern`
