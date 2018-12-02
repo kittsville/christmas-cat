@@ -1,4 +1,4 @@
-# Business Cat Bot
+# Christmas Cat Bot
 
 A Slack bot to purrcedurally generate ~~Business~~ Christmas Cat's daily stand-up message e.g.
 ```
