@@ -14,7 +14,7 @@ import (
 	"github.com/intenthq/golukay"
 )
 
-var version = "0.4"
+var version = "0.4-CHRISTMAS-EDITION"
 
 type slackResponse struct {
 	ResponseType string `json:"response_type"`
@@ -81,6 +81,14 @@ var verbs = []verb{
 	verb{"Hissed at", "Hiss at"},
 	verb{"Kneaded", "Knead"},
 	verb{"Sat on", "Sit on"},
+
+	// Christmas Verbs
+	verb{"Decorated", "Decorate"},
+	verb{"Prepared", "Prepare"},
+	verb{"Ate", "Eat"},
+	verb{"Gift wrapped", "Gift wrap"},
+	verb{"Sung at", "Sing at"},
+	verb{"Worshipped", "Worship"},
 }
 
 var defaultSubjects = []string{
@@ -99,30 +107,24 @@ var defaultSubjects = []string{
 }
 
 var defaultObjects = []string{
-	"data",
-	"data lake",
-	"dashboard",
-	"signal control",
-	"AI",
-	"ingestion",
-	"user flow",
-	"exports",
-	"workflow",
-	"infrastructure",
-	"data processes",
-	"GDPR readiness",
-	"happy path",
-	"ISO compliance",
-	"demo",
-	"all hands",
-	"pipelines",
-	"interview process",
-	"onboarding",
-	"roadmap",
-	"agenda",
-	"churn",
-	"intern",
-	"prospective client",
+	"naughty list",
+	"nice list",
+	"elves",
+	"sleigh",
+	"workshop",
+	"presents",
+	"carol singers",
+	"merriment",
+	"christmas tree",
+	"christmas cake",
+	"christmas mericle",
+	"mulled wine",
+	"snowman",
+	"mine pies",
+	"three wise men",
+	"stocking",
+	"turkey",
+	"wrapping paper",
 }
 
 func isBankHoliday(holidays []golukay.BankHoliday, date time.Time) bool {
