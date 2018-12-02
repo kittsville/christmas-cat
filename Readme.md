@@ -1,9 +1,9 @@
 # Business Cat Bot
 
-A Slack bot to purrcedurally generate Business Cat's daily stand-up message e.g.
+A Slack bot to purrcedurally generate ~~Business~~ Christmas Cat's daily stand-up message e.g.
 ```
-Y: Curiously pawed client’s exports
-T: Disrupt literally anyone’s workflow
+Y: Curiously pawed client’s presents
+T: Disrupt literally anyone’s carol singers
 ```
 
 Inspired by [this](https://twitter.com/kittsville/status/983623739421220864) adorable kitty.
