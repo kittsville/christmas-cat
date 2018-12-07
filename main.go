@@ -120,7 +120,7 @@ var defaultObjects = []string{
 	"christmas mericle",
 	"mulled wine",
 	"snowman",
-	"mine pies",
+	"mince pies",
 	"three wise men",
 	"stocking",
 	"turkey",
