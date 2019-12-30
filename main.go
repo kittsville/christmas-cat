@@ -117,7 +117,7 @@ var defaultObjects = []string{
 	"merriment",
 	"christmas tree",
 	"christmas cake",
-	"christmas mericle",
+	"christmas miracle",
 	"mulled wine",
 	"snowman",
 	"mince pies",
